@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import "../App.css"; // Usa tu propio archivo de estilos si tienes uno
-import imageHome from "../logo.svg"; // Cambia a tu imagen cuando la tengas
+import "../styles/home.css";
+import imageHome from "../assets/imageHome.svg";
+
 
 const Home = () => {
   return (
