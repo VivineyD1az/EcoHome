@@ -1,0 +1,121 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #879D84;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-box {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 40px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+}
+
+h2 {
+    margin: 0;
+    color: #77796B;
+    font-size: 35px;
+}
+
+p {
+    color: #777;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.crear-cuenta-link {
+    color: #4C4C3D; 
+    font-weight: 550;
+}
+
+.crear-cuenta-link:hover {
+    text-decoration: underline;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    background-color: #EAEAEA;
+    border: none;
+    border-radius: 25px;
+    padding: 12px;
+    margin: 10px auto;
+    width: 90%; 
+    font-size: 16px;
+    display: block; 
+}
+
+button {
+    background-color: #7C8465;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px auto; 
+    width: 40%; 
+    display: block; 
+}
+
+button:hover {
+    background-color: #8A9688;
+}
+
+.login-text {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #555;
+}
+
+.login-text a {
+    color: #4C4C3D;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+.login-text a:hover {
+    text-decoration: underline;
+}
+
+.extra-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto 10px auto;
+    font-size: 14px;
+    color: #555;
+}
+
+.extra-options label {
+    display: flex;
+    align-items: center;
+}
+
+.extra-options a {
+    color: #4C4C3D;
+    text-decoration: none;
+}
+
+.extra-options a:hover {
+    text-decoration: underline;
+}
