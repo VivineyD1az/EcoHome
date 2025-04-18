@@ -1,21 +1,15 @@
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+
+
+.loginContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #879D84;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
+    font-family: Arial, sans-serif;
 }
 
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.form-box {
+.formBox {
     background-color: #fff;
     padding: 40px;
     border-radius: 40px;
@@ -24,34 +18,33 @@ body {
     width: 400px;
 }
 
-h2 {
+.title {
     margin: 0;
     color: #77796B;
     font-size: 35px;
 }
 
-p {
+.paragraph {
     color: #777;
     font-size: 14px;
     margin-top: 5px;
 }
 
-.crear-cuenta-link {
+.crearCuentaLink {
     color: #4C4C3D; 
     font-weight: 550;
 }
 
-.crear-cuenta-link:hover {
+.crearCuentaLink:hover {
     text-decoration: underline;
 }
 
-
-form {
+.form {
     display: flex;
     flex-direction: column;
 }
 
-input {
+.input {
     background-color: #EAEAEA;
     border: none;
     border-radius: 25px;
@@ -62,7 +55,7 @@ input {
     display: block; 
 }
 
-button {
+.button {
     background-color: #7C8465;
     color: white;
     border: none;
@@ -75,28 +68,11 @@ button {
     display: block; 
 }
 
-button:hover {
+.button:hover {
     background-color: #8A9688;
 }
 
-.login-text {
-    margin-top: 15px;
-    font-size: 14px;
-    color: #555;
-}
-
-.login-text a {
-    color: #4C4C3D;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-
-.login-text a:hover {
-    text-decoration: underline;
-}
-
-.extra-options {
+.extraOptions {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -106,16 +82,16 @@ button:hover {
     color: #555;
 }
 
-.extra-options label {
+.extraOptions label {
     display: flex;
     align-items: center;
 }
 
-.extra-options a {
+.extraOptions a {
     color: #4C4C3D;
     text-decoration: none;
 }
 
-.extra-options a:hover {
+.extraOptions a:hover {
     text-decoration: underline;
 }
