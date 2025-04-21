@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../styles/login.module.css";
 
-const LoginForm = () => {
+const Login= () => {
   return (
     <div className={styles.loginContainer}>
       <div className={styles.formBox}>
@@ -19,7 +19,7 @@ const LoginForm = () => {
             <label>
               <input type="checkbox" style={{ marginRight: "5px" }} /> Recuérdame
             </label>
-            <a href="#">¿Olvidaste tu contraseña?</a>
+            <a href="/Login">¿Olvidaste tu contraseña?</a>
           </div>
           <button className={styles.button} type="submit">
             Iniciar sesión
@@ -30,4 +30,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default Login;
