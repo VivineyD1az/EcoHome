@@ -1,0 +1,69 @@
+/* register.module.css */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #879D84;
+}
+
+.formBox {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 40px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+}
+
+h2 {
+    margin: 0;
+    color: #77796B;
+    font-size: 35px;
+}
+
+p {
+    color: #777;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    background-color: #EAEAEA;
+    border: none;
+    border-radius: 25px;
+    padding: 12px;
+    margin: 1px auto;
+    width: 90%;
+    font-size: 16px;
+}
+
+button {
+    background-color: #7C8465;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: -50px auto 10px;
+    width: 40%;
+}
+
+button:hover {
+    background-color: #8A9688;
+}
+
+.loginLink {
+    color: #4C4C3D;
+    font-weight: bold;
+}
+
+.loginLink:hover {
+    text-decoration: underline;
+}
