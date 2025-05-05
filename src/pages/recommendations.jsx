@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-
+import '../styles/recommendations.css';
 const Reccomendations = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ const Reccomendations = () => {
 
   return (
     <div className="container">
-      <h2>Recomendaciones para ti</h2>
+      <h2>Recomendaciones</h2>
       <p><strong>Personas:</strong> {personas}</p>
       <p><strong>Mes:</strong> {mes}</p>
       <p><strong>Costo:</strong> ${costo.toLocaleString()}</p>
