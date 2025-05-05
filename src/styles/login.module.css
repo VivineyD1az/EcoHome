@@ -62,7 +62,7 @@
     display: block; 
 }
 
-.button {
+.buttonlogin {
     background-color: #7C8465;
     color: white;
     border: none;
@@ -71,11 +71,11 @@
     font-size: 16px;
     cursor: pointer;
     margin: 10px auto; 
-    width: 40%; 
+    width: 50%; 
     display: block; 
 }
 
-.button:hover {
+.buttonlogin:hover {
     background-color: #8A9688;
 }
 

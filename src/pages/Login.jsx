@@ -21,7 +21,7 @@ const Login= () => {
             </label>
             <a href="/Login">¿Olvidaste tu contraseña?</a>
           </div>
-          <button className={styles.button} type="submit">
+          <button className={styles.buttonlogin} type="submit">
             Iniciar sesión
           </button>
         </form>
