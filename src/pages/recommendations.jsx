@@ -1,43 +1,41 @@
-import React from 'react';
-import '../styles/recommendations.css'; 
-import placeholderImg from '../assets/placeholder.png'; 
+import { useLocation, useNavigate } from "react-router-dom";
 
-const recommendationsData = [
-  {
-    title: "Optimización de Consumo",
-    text: [
-      "Si tu proveedor de electricidad ofrece tarifas diferenciadas por horario: Programa el uso de electrodomésticos en horas valle (cuando la energía es más barata). Evita operar equipos de alto consumo en horas pico."
-    ]
-  },
-  {
-    title: "Gestión Eficiente de Equipos",
-    text: [
-      "Si tu proveedor de electricidad ofrece tarifas diferenciadas por horario: Programa el uso de electrodomésticos en horas valle (cuando la energía es más barata). Evita operar equipos de alto consumo en horas pico."
-    ]
-  },
-  {
-    title: "Monitoreo y Automatización",
-    text: [
-      "Implementa sistemas de gestión energética (EMS) para: Medir y analizar el consumo en tiempo real. Detectar ineficiencias y sobrecargos. Automatizar el encendido y apagado de dispositivos clave."
-    ]
+const Reccomendations = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { personas, mes, costo } = location.state || {};
+
+  if (!personas || !mes || !costo) {
+    return (
+      <div>
+        <p>No se han recibido datos. Regresa e intenta de nuevo.</p>
+        <button onClick={() => navigate("/")}>Volver</button>
+      </div>
+    );
   }
-];
 
-export default function Recommendations() {
+  const generarRecomendacion = () => {
+    if (costo > 100000) {
+      return "Tu gasto es muy alto. Considera revisar electrodomésticos de alto consumo y usar bombillos LED.";
+    } else if (costo > 50000) {
+      return "Estás dentro de un consumo medio. Puedes ahorrar más con hábitos conscientes de consumo.";
+    } else {
+      return "¡Buen trabajo! Tu consumo es bajo. Sigue así y motiva a otros a hacerlo también.";
+    }
+  };
+
   return (
-    <div className="recommendations-container">
-      <h1>Recomendaciones</h1>
-      {recommendationsData.map((item, index) => (
-        <div className="recommendation" key={index}>
-          <img src={placeholderImg} alt="Ícono recomendación" />
-          <div className="recommendation-text">
-            <h2>{item.title}</h2>
-            {item.text.map((line, i) => (
-              <p key={i}>{line}</p>
-            ))}
-          </div>
-        </div>
-      ))}
+    <div className="container">
+      <h2>Recomendaciones para ti</h2>
+      <p><strong>Personas:</strong> {personas}</p>
+      <p><strong>Mes:</strong> {mes}</p>
+      <p><strong>Costo:</strong> ${costo.toLocaleString()}</p>
+      <div className="recomendacion">
+        <p>{generarRecomendacion()}</p>
+      </div>
+      <button onClick={() => navigate("/")}>Volver al inicio</button>
     </div>
   );
-}
+};
+
+export default Reccomendations;
