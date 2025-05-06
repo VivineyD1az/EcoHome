@@ -1,18 +1,25 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/dataInput.css';
+import '../pages/recommendations.jsx' 
 
 const DataInput = () => {
   const [personas, setPersonas] = useState('');
   const [mes, setMes] = useState('');
   const [costo, setCosto] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Personas:", personas);
-    console.log("Mes:", mes);
-    console.log("Costo:", costo);
-    // Aquí podrías hacer lógica adicional, como enviar a una API
-    alert("Datos enviados correctamente 🎉");
+
+    // Redirige a la ventana de recomendaciones y pasa los datos
+    navigate('/recommendations', {
+      state: {
+        personas: parseInt(personas),
+        mes: parseInt(mes),
+        costo: parseFloat(costo)
+      }
+    });
   };
 
   return (
