@@ -5,9 +5,9 @@ import imageHome from "../assets/imageHome.svg";
 
 const Home = () => {
   return (
-    <div className="container">
+    <div className="container_home">
       <h2>EcoHome</h2>
-
+      <div className="container_white"></div>
       <div className="enter-page">
         <Link to="/login">Iniciar sesión</Link>
         <Link to="/register">Crear una cuenta</Link>
