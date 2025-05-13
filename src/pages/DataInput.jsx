@@ -42,7 +42,7 @@ const DataInput = () => {
         />
         <input
           type="number"
-          placeholder="Costo total del consumo"
+          placeholder="Costo total"
           value={costo}
           onChange={(e) => setCosto(e.target.value)}
           required
