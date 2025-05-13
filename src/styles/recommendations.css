@@ -19,21 +19,21 @@ body {
   max-width: 600px;
   text-align: center;
   box-sizing: border-box;
-  overflow: hidden; /* Asegura que nada se desborde */
+  overflow: hidden; 
 }
 
 /* Título */
 .container h2 {
   font-size: 2em;
   color: #789262;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 /* Texto de datos */
 .container p {
   font-size: 1.1em;
   color: #333;
-  margin: 2px 0;
+  margin: 2px 0px;
 }
 
 /* Recomendación destacada */
@@ -41,25 +41,10 @@ body {
   background-color: #eeeeee;
   padding: 20px;
   border-radius: 16px;
-  margin: 20px auto;
+  margin: 13px auto;
   box-shadow: 6px 6px 0px #b2c2a9;
   font-size: 1.1em;
   color: #333;
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-/* Botón de volver */
-.container button {
-  background-color: #789262;
-  color: white;
-  font-weight: bold;
-  font-size: 16px;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: transform 0.2s ease, background-color 0.2s ease;
   max-width: 100%;
   box-sizing: border-box;
 }

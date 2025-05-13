@@ -15,7 +15,7 @@
   }
   .container {
     width: 460px;
-    height: 380px;
+    height: 350px;
     background: white;
     padding: 25px;
     border-radius: 40px;
@@ -25,13 +25,13 @@
   h2 {
     font-size: 35px;
     color: #75766b;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
   }
   
   input {
   width: 100%;
   padding: 12px 18px;
-  margin: 12px 0px;
+  margin: 8px 0px;
   border-radius: 40px;
   background-color: #EBEBEB;
   color: #737373;
@@ -48,9 +48,9 @@
     border: none;
     border-radius: 40px;
     cursor: pointer;
-    width: 200px;
+    width: 290px;
     font-size: 14px;
-    margin-top: 13px;
+    margin-top: 21px;
     font-weight: 550;
     letter-spacing: 0.5px;
   }
