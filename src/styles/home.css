@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
+    z-index: 1;
 }
 
 body {
@@ -30,7 +31,7 @@ body {
 
 
 /* TEXTO ECOHOME */
-.container_home h2  {
+.container_home h1  {
     font-size: 35px;
     color: #75766b;
     margin-bottom: 15px;
@@ -47,6 +48,18 @@ body {
     display: flex;
     gap: 15px;
 }
+/* Boton de "Iniciar sección" */
+.enter-page button{
+    color: #84857b;
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    width: 150px;
+    font-size: 15px;
+    margin-top: 21px;
+    letter-spacing: 0.5px;
+}
 
 .enter-page a {
     color: #75766b;
@@ -62,6 +75,18 @@ body {
     text-decoration: underline;
 }
 
+.close-button {
+    position: absolute;
+    color: #e4ebe3;
+    top: 100px;
+    right: 400px;
+    border: none;
+    background: transparent;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 2;
+}
 /* TEXTO "MEJORA CONUSMO" Y BOTÓN "EMPEZAR" */
 .container_textButton {
     position: absolute;
@@ -95,6 +120,20 @@ body {
     display: inline-block;
     text-align: center; 
     margin-top: 10px;
+}
+/* Boton de "Empezar ya" */
+.button_ya {
+    background-color: #8B9789;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 190px;
+    font-size: 14px;
+    margin-top: 21px;
+    font-weight: 550;
+    letter-spacing: 0.5px;
 }
 
 

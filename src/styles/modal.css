@@ -1,0 +1,35 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2; /* Asegura que esté encima de todo */
+}
+
+.modal-content {
+  position: relative;
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  z-index: 10000; /* Más alto aún, si fuera necesario */
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10001;
+}

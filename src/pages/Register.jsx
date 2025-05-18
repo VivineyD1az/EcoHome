@@ -37,7 +37,7 @@ const Register = () => {
           <input name="email" onChange={handleChange} className={styles.input} type="email" placeholder="Correo electrónico" required />
           <input name="password" onChange={handleChange} className={styles.input} type="password" placeholder="Contraseña" required />
           <input name="confirmPassword" onChange={handleChange} className={styles.input} type="password" placeholder="Confirmar contraseña" required />
-          <button className={styles.button} type="submit">Registrarme</button>
+          <button className={styles.button_register} type="submit">Registrarme</button>
         </form>
       </div>
     </div>

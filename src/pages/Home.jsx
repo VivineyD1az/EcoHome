@@ -1,21 +1,30 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
 import "../styles/home.css";
 import imageHome from "../assets/imageHome.svg";
-
+import Login from "./Login";
+import Register from "./Register";
 
 const Home = () => {
+  const [showLogin, setShowLogin] = useState(false);
+  const [showRegister, setShowRegister] = useState(false);
+
+  const closeModals = () => {
+    setShowLogin(false);
+    setShowRegister(false);
+  };
+
   return (
     <div className="container_home">
-      <h2>EcoHome</h2>
+      <h1>EcoHome</h1>
       <div className="container_white"></div>
       <div className="enter-page">
-        <Link to="/login">Iniciar sesión</Link>
-        <Link to="/register">Crear una cuenta</Link>
+        <button onClick={() => setShowLogin(true)}>Iniciar sesión</button>
+        <button onClick={() => setShowRegister(true)}>Crear una cuenta</button>
       </div>
 
       <div className="container_textButton">
         <p>¡Mejora tu consumo de energía ahora!</p>
-        <Link to="/login">EMPIEZA YA</Link>
+        <button className ='button_ya' onClick={() => setShowLogin(true)}>EMPIEZA YA</button>
       </div>
 
       <div className="image">
@@ -27,6 +36,24 @@ const Home = () => {
           </a>
         </p>
       </div>
+
+      {showLogin && (
+        <div className="modal">
+          <div className="modal-content">
+            <button className="close-button" onClick={closeModals}>X</button>
+            <Login />
+          </div>
+        </div>
+      )}
+
+      {showRegister && (
+        <div className="modal">
+          <div className="modal-content">
+            <button className="close-button" onClick={closeModals}>X</button>
+            <Register />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -41,7 +41,7 @@
 }
 
   
-  button {
+  .dataInput {
     background-color: #8B9789;
     color: white;
     padding: 12px;
@@ -54,6 +54,6 @@
     font-weight: 550;
     letter-spacing: 0.5px;
   }
-  button:hover {
-    background-color: #5A6653;
+  .dataInput:hover {
+    background-color:#5A6653;
 }

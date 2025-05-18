@@ -4,7 +4,8 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #879D84;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .formBox {
@@ -45,19 +46,23 @@ input {
     font-size: 16px;
 }
 
-button {
-    background-color: #7C8465;
+.button_register {
+    background-color: #75766B;
     color: white;
-    border: none;
     padding: 12px;
-    border-radius: 20px;
-    font-size: 16px;
+    border: none;
+    border-radius: 40px;
     cursor: pointer;
-    margin: 10px auto 10px;
-    width: 40%;
+    width: 220px;
+    font-size: 14px;
+    margin-top: 21px;
+    font-weight: 550;
+    letter-spacing: 0.5px;
+    position: relative;
+    left: 56px;
 }
 
-button:hover {
+.button_register:hover {
     background-color: #8A9688;
 }
 

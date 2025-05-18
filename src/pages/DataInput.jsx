@@ -47,7 +47,7 @@ const DataInput = () => {
           onChange={(e) => setCosto(e.target.value)}
           required
         />
-        <button type="submit">Generar recomendación</button>
+        <button type="submit" className='button_dataInput'>Generar recomendación</button>
       </form>
     </div>
   );
