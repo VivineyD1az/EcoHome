@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "../styles/register.module.css";
 
-const Register = () => {
+const Register = ({ onSwitchToLogin }) => {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -31,7 +31,12 @@ const Register = () => {
     <div className={styles.container}>
       <div className={styles.formBox}>
         <h2>Crear cuenta</h2>
-        <p>¿Ya tienes una cuenta? <a className={styles.loginLink} href="/login">Iniciar sesión</a></p>
+        <p>
+          ¿Ya tienes una cuenta?{" "}
+          <span className={styles.loginLink} onClick={onSwitchToLogin}>
+            Iniciar sesión
+          </span>
+        </p>
         <form onSubmit={handleSubmit}>
           <input name="username" onChange={handleChange} className={styles.input} type="text" placeholder="Nombre de usuario" required />
           <input name="email" onChange={handleChange} className={styles.input} type="email" placeholder="Correo electrónico" required />

@@ -13,6 +13,16 @@ const Home = () => {
     setShowRegister(false);
   };
 
+  const switchToRegister = () => {
+    setShowLogin(false);
+    setShowRegister(true);
+  };
+
+  const switchToLogin = () => {
+    setShowRegister(false);
+    setShowLogin(true);
+  };
+
   return (
     <div className="container_home">
       <h1>EcoHome</h1>
@@ -24,7 +34,7 @@ const Home = () => {
 
       <div className="container_textButton">
         <p>¡Mejora tu consumo de energía ahora!</p>
-        <button className ='button_ya' onClick={() => setShowLogin(true)}>EMPIEZA YA</button>
+        <button className="button_ya" onClick={() => setShowLogin(true)}>EMPIEZA YA</button>
       </div>
 
       <div className="image">
@@ -41,7 +51,7 @@ const Home = () => {
         <div className="modal">
           <div className="modal-content">
             <button className="close-button" onClick={closeModals}>X</button>
-            <Login />
+            <Login onSwitchToRegister={switchToRegister} />
           </div>
         </div>
       )}
@@ -50,7 +60,7 @@ const Home = () => {
         <div className="modal">
           <div className="modal-content">
             <button className="close-button" onClick={closeModals}>X</button>
-            <Register />
+            <Register onSwitchToLogin={switchToLogin} />
           </div>
         </div>
       )}
