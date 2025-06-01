@@ -1,14 +1,21 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import styles from "../styles/login.module.css";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase/firebaseConfig";
 
 const Login = ({ onSwitchToRegister }) => {
-  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    navigate("/enter");
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      alert("¡Inicio de sesión exitoso!");
+      console.log(userCredential.user);
+    } catch (error) {
+      alert("Error al iniciar sesión: " + error.message);
+    }
   };
 
   return (
@@ -22,8 +29,8 @@ const Login = ({ onSwitchToRegister }) => {
           </span>
         </p>
         <form className={styles.form} onSubmit={handleSubmit}>
-          <input className={styles.input} type="text" placeholder="Usuario" required />
-          <input className={styles.input} type="password" placeholder="Contraseña" required />
+          <input className={styles.input} type="email" placeholder="Correo electrónico" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          <input className={styles.input} type="password" placeholder="Contraseña" value={password} onChange={(e) => setPassword(e.target.value)} required />
           <div className={styles.extraOptions}>
             <label>
               <input type="checkbox" style={{ marginRight: "5px" }} /> Recuérdame
@@ -39,4 +46,4 @@ const Login = ({ onSwitchToRegister }) => {
   );
 };
 
-export default Login;
+export default Login;

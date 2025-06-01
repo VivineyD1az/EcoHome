@@ -1,35 +1,37 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import styles from "../styles/register.module.css";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase/firebaseConfig";
 
 const Register = ({ onSwitchToLogin }) => {
-  const navigate = useNavigate();
-
   const [formData, setFormData] = useState({
-    username: "",
     email: "",
     password: "",
     confirmPassword: ""
   });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({...formData, [e.target.name]: e.target.value});
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("http://localhost:3001/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData)
-    });
+    if (formData.password !== formData.confirmPassword) {
+      alert("Las contraseñas no coinciden.");
+      return;
+    }
 
-    const result = await response.text();
-    alert(result);
-
-    if (response.ok) {
-      navigate("/enter");
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        formData.email,
+        formData.password
+      );
+      alert("¡Usuario registrado con éxito!");
+      console.log(userCredential.user);
+    } catch (error) {
+      alert("Error al registrar: " + error.message);
     }
   };
 
@@ -44,7 +46,6 @@ const Register = ({ onSwitchToLogin }) => {
           </span>
         </p>
         <form onSubmit={handleSubmit}>
-          <input name="username" onChange={handleChange} className={styles.input} type="text" placeholder="Nombre de usuario" required />
           <input name="email" onChange={handleChange} className={styles.input} type="email" placeholder="Correo electrónico" required />
           <input name="password" onChange={handleChange} className={styles.input} type="password" placeholder="Contraseña" required />
           <input name="confirmPassword" onChange={handleChange} className={styles.input} type="password" placeholder="Confirmar contraseña" required />
@@ -55,4 +56,4 @@ const Register = ({ onSwitchToLogin }) => {
   );
 };
 
-export default Register;
+export default Register;
