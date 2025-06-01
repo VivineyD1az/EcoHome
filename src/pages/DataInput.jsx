@@ -23,7 +23,7 @@ const DataInput = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container_general">
       <h2 className='h2-input'>Ingreso de datos</h2>
       <form onSubmit={handleSubmit}>
         <input
@@ -53,4 +53,4 @@ const DataInput = () => {
   );
 };
 
-export default DataInput;
+export default DataInput;

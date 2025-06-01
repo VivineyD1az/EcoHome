@@ -44,9 +44,9 @@ const Enter = () => {
       </div>
 
       {showDataInput && (
-        <div className="modal">
-          <div className="modal-content">
-            <button className="close-button" onClick={closeModals}>
+        <div className="data-modal">
+          <div className="data-modal-content">
+            <button className="data-close-button" onClick={closeModals}>
               X
             </button>
             <DataInput />
@@ -55,9 +55,9 @@ const Enter = () => {
       )}
 
       {showRecommendations && (
-        <div className="modal">
-          <div className="modal-content">
-            <button className="close-button" onClick={closeModals}>
+        <div className="data-modal">
+          <div className="data-modal-content">
+            <button className="data-close-button" onClick={closeModals}>
               X
             </button>
             <Recommendations />
