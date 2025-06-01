@@ -28,8 +28,8 @@ const Home = () => {
       <h1>EcoHome</h1>
       <div className="container_white"></div>
       <div className="enter-page">
-        <button onClick={() => setShowLogin(true)}>Iniciar sesión</button>
-        <button onClick={() => setShowRegister(true)}>Crear una cuenta</button>
+        <button onClick={() => setShowLogin(true)}>INICIAR SESION</button>
+        <button onClick={() => setShowRegister(true)}>CREAR CUENTA</button>
       </div>
 
       <div className="container_textButton">
