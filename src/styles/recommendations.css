@@ -12,8 +12,8 @@ body {
 /* Contenedor principal */
 .container {
   background-color: white;
-  padding: 40px;
-  border-radius: 40px;
+  padding: 42px;
+  border-radius: 42px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   width: 90%;
   max-width: 600px;
@@ -26,22 +26,22 @@ body {
 .container h2 {
   font-size: 2em;
   color: #789262;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 /* Texto de datos */
 .container p {
   font-size: 1.1em;
   color: #333;
-  margin: 2px 0px;
+  margin: 1px 0px;
 }
 
 /* Recomendación destacada */
 .recomendacion {
   background-color: #eeeeee;
-  padding: 20px;
+  padding: 15px;
   border-radius: 16px;
-  margin: 13px auto;
+  margin: 12px auto;
   box-shadow: 6px 6px 0px #b2c2a9;
   font-size: 1.1em;
   color: #333;
@@ -51,6 +51,37 @@ body {
 
 /* Animación al pasar el mouse */
 .container button:hover {
-  background-color: #5e744c;
+  background-color: #7cae1d;
   transform: scale(1.05);
+}
+
+.back-button {
+  background-color: #86ac41;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: auto; 
+    width: 45%; 
+}
+
+.no-data-content {
+  background-color: #86ac41;
+  padding: 20px;
+  border-radius: 16px;
+  margin: 12px auto;
+  font-size: 1.1em;
+  color: #333;
+  max-width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+
+}
+.no-data-content p {
+  color: #ffffff; 
 }

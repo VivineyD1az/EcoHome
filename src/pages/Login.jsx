@@ -1,7 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "../styles/login.module.css";
 
 const Login = ({ onSwitchToRegister }) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    navigate("/enter");
+  };
+
   return (
     <div className={styles.loginContainer}>
       <div className={styles.formBox}>
@@ -12,7 +21,7 @@ const Login = ({ onSwitchToRegister }) => {
             Crear cuenta
           </span>
         </p>
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit}>
           <input className={styles.input} type="text" placeholder="Usuario" required />
           <input className={styles.input} type="password" placeholder="Contraseña" required />
           <div className={styles.extraOptions}>

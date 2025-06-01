@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "../styles/register.module.css";
 
 const Register = ({ onSwitchToLogin }) => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -10,13 +13,12 @@ const Register = ({ onSwitchToLogin }) => {
   });
 
   const handleChange = (e) => {
-    setFormData({...formData, [e.target.name]: e.target.value});
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Envía los datos al backend local
     const response = await fetch("http://localhost:3001/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -25,6 +27,10 @@ const Register = ({ onSwitchToLogin }) => {
 
     const result = await response.text();
     alert(result);
+
+    if (response.ok) {
+      navigate("/enter");
+    }
   };
 
   return (

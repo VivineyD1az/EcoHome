@@ -7,11 +7,12 @@ const Reccomendations = () => {
 
   if (!personas || !mes || !costo) {
     return (
-      <div>
+      <div className="no-data-content">
         <p>No se han recibido datos. Regresa e intenta de nuevo.</p>
-        <button onClick={() => navigate("/")}>Volver</button>
+        <button className="back-button" onClick={() => navigate("/enter", { replace: true })}>Volver</button>
       </div>
     );
+
   }
 
   const generarRecomendacion = () => {
@@ -33,7 +34,7 @@ const Reccomendations = () => {
       <div className="recomendacion">
         <p>{generarRecomendacion()}</p>
       </div>
-      <button onClick={() => navigate("/")}>Volver al inicio</button>
+      <button className="back-button" onClick={() => navigate("/enter")}>Volver al inicio</button>
     </div>
   );
 };

@@ -33,7 +33,7 @@ body {
 /* TEXTO ECOHOME */
 .container_home h1  {
     font-size: 35px;
-    color: #86ac41;
+    color: #8B9789;
     margin-bottom: 15px;
     position: absolute;
     top: 20px;
@@ -48,7 +48,7 @@ body {
     display: flex;
     gap: 15px;
 }
-/* Boton de "Iniciar sección" */
+/* Boton de "Iniciar sesion" */
 .enter-page button{
     color: #84857b;
     background-color: transparent;
