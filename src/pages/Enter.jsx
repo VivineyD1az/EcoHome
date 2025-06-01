@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "../styles/enter.css";
-import imageHome from "../assets/imageHome.svg";
+import enterImage from "../assets/enter.png";
 import DataInput from "./DataInput";
 import Recommendations from "./recommendations";
 
@@ -15,44 +15,32 @@ const Enter = () => {
 
   return (
     <div className="container_enter">
-        <h1>EcoHome</h1>
-        <div className="container_white"></div>
+      <h1>EcoHome</h1>
+      <div className="container_white"></div>
 
-        <div className="input-button">
-            <button onClick={() => setShowDataInput(true)}>INGRESO DE DATOS</button>
-        </div>
+      <div className="input-button">
+        <button onClick={() => setShowDataInput(true)}>INGRESO DE DATOS</button>
+      </div>
 
-        <div className="recommendation-button">
-            <button onClick={() => setShowRecommendations(true)}>CONSULTAR AVANCE</button>
-        </div>
-      
+      <div className="recommendation-button">
+        <button onClick={() => setShowRecommendations(true)}>CONSULTAR AVANCE</button>
+      </div>
+
       <div className="container_textButton">
         <p className="titulo_ahorro">AHORRO ENERGÉTICO PARA TU HOGAR</p>
         <p className="descripcion_ahorro">
-            Transforma tu consumo: <br />
-            Comprende tu gasto, <br />
-            Mejora tus hábitos, <br />
-            Vive más sostenible.
-            </p>
-            <button className="button_enter" onClick={() => setShowDataInput(true)}>
-                INGRESO DE DATOS
-                </button>
-                </div>
-
-
+          Transforma tu consumo: <br />
+          Comprende tu gasto, <br />
+          Mejora tus hábitos, <br />
+          Vive más sostenible.
+        </p>
+        <button className="button_enter" onClick={() => setShowDataInput(true)}>
+          INGRESO DE DATOS
+        </button>
+      </div>
 
       <div className="image">
-        <img src={imageHome} alt="Ilustración sobre la energía" />
-        <p>
-          Imagen de{" "}
-          <a
-            href="https://storyset.com/idea"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Storyset
-          </a>
-        </p>
+        <img src={enterImage} alt="Ilustración sobre la energía" />
       </div>
 
       {showDataInput && (

@@ -24,7 +24,7 @@ const DataInput = () => {
 
   return (
     <div className="container">
-      <h2>Ingreso de datos</h2>
+      <h2 className='h2-input'>Ingreso de datos</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="number"
