@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/dataInput.css';
-import '../pages/recommendations.jsx' 
+import { db } from '../firebase/firebaseConfig';
+import { collection, addDoc } from 'firebase/firestore'; // funciones para guardar datos
 
 const DataInput = () => {
   const [personas, setPersonas] = useState('');
@@ -9,17 +10,26 @@ const DataInput = () => {
   const [costo, setCosto] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Redirige a la ventana de recomendaciones y pasa los datos
-    navigate('/recommendations', {
-      state: {
-        personas: parseInt(personas),
-        mes: parseInt(mes),
-        costo: parseFloat(costo)
-      }
-    });
+    const data = {
+      personas: parseInt(personas),
+      mes: parseInt(mes),
+      costo: parseFloat(costo),
+      timestamp: new Date()
+    };
+
+    try {
+      // Guardar en Firebase
+      await addDoc(collection(db, 'datosFormulario'), data);
+      console.log('Datos guardados en Firestore');
+
+      // Redirigir a la página de recomendaciones
+      navigate('/recommendations', { state: data });
+    } catch (error) {
+      console.error('Error al guardar datos:', error);
+    }
   };
 
   return (
