@@ -28,8 +28,13 @@ const Register = ({ onSwitchToLogin }) => {
         formData.email,
         formData.password
       );
-      alert("¡Usuario registrado con éxito!");
+      
       console.log(userCredential.user);
+      
+      if (onSwitchToLogin) {
+        onSwitchToLogin();   // Llama a la función para cambiar a la página de inicio de sesión
+      }
+    
     } catch (error) {
       alert("Error al registrar: " + error.message);
     }
