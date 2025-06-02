@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // ✅ Importar useNavigate
+import { useNavigate } from "react-router-dom"; 
 import "../styles/enter.css";
 import enterImage from "../assets/enter.png";
 import DataInput from "./DataInput";
 
 const Enter = () => {
   const [showDataInput, setShowDataInput] = useState(false);
-  const navigate = useNavigate(); // ✅ Hook de navegación
+  const navigate = useNavigate(); 
 
   const closeModals = () => {
     setShowDataInput(false);
@@ -22,7 +22,7 @@ const Enter = () => {
       </div>
 
       <div className="recommendation-button">
-        <button onClick={() => navigate("/advance")}>CONSULTAR AVANCE</button> {/* ✅ Aquí navega */}
+        <button onClick={() => navigate("/advance")}>CONSULTAR AVANCE</button> 
       </div>
 
       <div className="container_textButton">
