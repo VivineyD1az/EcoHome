@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale } from 'chart.js';
-import '../styles/advance.css'; // usa el estilo que gustes
 
 ChartJS.register(BarElement, CategoryScale, LinearScale);
 
@@ -46,15 +45,64 @@ const ChartPage = () => {
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
+    layout: {
+      padding: 10,
+    },
     scales: {
-      y: { beginAtZero: true },
+      y: {
+        beginAtZero: true,
+        ticks: {
+          color: '#4e4e4e',
+        },
+      },
+      x: {
+        ticks: {
+          color: '#4e4e4e',
+        },
+      },
+    },
+    plugins: {
+      legend: {
+        labels: {
+          color: '#4e4e4e',
+        },
+      },
     },
   };
 
   return (
-    <div className="chart-container">
-      <h2>Gráfica de Consumo</h2>
-      <Bar data={data} options={options} />
+    <div
+      style={{
+        width: '100vw',
+        height: '100vh',
+        backgroundColor: '#bcd4a2',
+        padding: '0',
+        margin: '0',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        overflow: 'hidden',
+      }}
+    >
+      <div
+        style={{
+          width: '70vw',
+          height: '480px', 
+          backgroundColor: '#ffffff',
+          borderRadius: '20px',
+          padding: '20px',
+          boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+          boxSizing: 'border-box',
+        }}
+      >
+        <h2 style={{ textAlign: 'center', color: '#6b8b6d', fontSize: '1.8rem', marginBottom: '16px' }}>
+          Gráfica de Consumo
+        </h2>
+        <div style={{ height: '100%', width: '100%' }}>
+          <Bar data={data} options={options} />
+        </div>
+      </div>
     </div>
   );
 };
