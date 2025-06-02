@@ -1,6 +1,39 @@
-*{
-    box-sizing: border-box;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
+    z-index: 1;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+
+.advance-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.advance-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.advance-table th, .advance-table td {
+  border: 1px solid #86ac41;
+  padding: 10px;
+  text-align: center;
+}
+
+.advance-table th {
+  background-color: #f0f0f0;
+}
+
+.advance-table tr:hover {
+  background-color: #86ac41;
 }

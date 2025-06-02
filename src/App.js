@@ -5,6 +5,8 @@ import Register from "./pages/Register";
 import Recommendations from "./pages/recommendations";
 import DataInput from "./pages/DataInput";
 import Enter from "./pages/Enter";
+import Advance from "./pages/advance";
+
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
         <Route path="/datainput" element={<DataInput/>}/>
         <Route path="/recommendations" element={<Recommendations />} /> 
         <Route path="/enter" element={<Enter />} />
+        <Route path="/advance" element={<Advance />} />
       </Routes>
     </Router>
   );

@@ -1,20 +1,28 @@
-// src/pages/Advance.jsx
 import React, { useEffect, useState } from 'react';
-import './Advance.css';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../firebase/firebaseConfig';
+import '../styles/advance.css';
 
 const Advance = () => {
   const [datos, setDatos] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/advance') // Ajusta la URL según tu backend
-      .then((res) => res.json())
-      .then((data) => setDatos(data))
-      .catch((error) => console.error('Error al cargar los datos:', error));
+    const fetchDatos = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, 'avances'));
+        const docs = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setDatos(docs);
+      } catch (error) {
+        console.error("Error al obtener los datos:", error);
+      }
+    };
+
+    fetchDatos();
   }, []);
 
   return (
     <div className="advance-container">
-      <h2>Listado de Avances</h2>
+      <h2>Tabla de Avances</h2>
       <table className="advance-table">
         <thead>
           <tr>
@@ -24,11 +32,11 @@ const Advance = () => {
           </tr>
         </thead>
         <tbody>
-          {datos.map((item, index) => (
-            <tr key={index}>
+          {datos.map((item) => (
+            <tr key={item.id}>
               <td>{item.personas}</td>
               <td>{item.mes}</td>
-              <td>{item.costo}</td>
+              <td>${item.costo}</td>
             </tr>
           ))}
         </tbody>
