@@ -2,17 +2,19 @@ import React, { useState } from "react";
 import styles from "../styles/login.module.css";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
+import { useNavigate } from "react-router-dom"; 
 
 const Login = ({ onSwitchToRegister }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate(); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      alert("¡Inicio de sesión exitoso!");
       console.log(userCredential.user);
+      navigate("/enter"); // Redirigir a la página de entrada después de iniciar sesión
     } catch (error) {
       alert("Error al iniciar sesión: " + error.message);
     }
@@ -46,4 +48,4 @@ const Login = ({ onSwitchToRegister }) => {
   );
 };
 
-export default Login;
+export default Login;
