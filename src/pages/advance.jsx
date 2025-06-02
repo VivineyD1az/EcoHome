@@ -1,52 +1,62 @@
 import React, { useEffect, useState } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../firebase/firebaseConfig';
-import '../styles/advance.css';
+import { getFirestore, collection, getDocs } from 'firebase/firestore';
+import { Bar } from 'react-chartjs-2';
+import { Chart as ChartJS, BarElement, CategoryScale, LinearScale } from 'chart.js';
+import '../styles/advance.css'; // usa el estilo que gustes
 
-const Advance = () => {
-  const [datos, setDatos] = useState([]);
+ChartJS.register(BarElement, CategoryScale, LinearScale);
+
+const ChartPage = () => {
+  const [meses, setMeses] = useState([]);
+  const [costos, setCostos] = useState([]);
 
   useEffect(() => {
-    const fetchDatos = async () => {
-      try {
-        const querySnapshot = await getDocs(collection(db, 'avances'));
-        const docs = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        setDatos(docs);
-      } catch (error) {
-        console.error("Error al obtener los datos:", error);
-      }
+    const cargarDatos = async () => {
+      const db = getFirestore();
+      const querySnapshot = await getDocs(collection(db, 'datosFormulario'));
+
+      const mesesTemp = [];
+      const costosTemp = [];
+
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        mesesTemp.push("Mes " + data.mes);
+        costosTemp.push(data.costo);
+      });
+
+      setMeses(mesesTemp);
+      setCostos(costosTemp);
     };
 
-    fetchDatos();
+    cargarDatos();
   }, []);
 
+  const data = {
+    labels: meses,
+    datasets: [
+      {
+        label: 'Costo mensual',
+        data: costos,
+        backgroundColor: '#879d84',
+        borderColor: '#6b8b6d',
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const options = {
+    responsive: true,
+    scales: {
+      y: { beginAtZero: true },
+    },
+  };
+
   return (
-    <div className="parent">
-      <div className="div1">
-        <div className="advance-container">
-          <h2>Tabla de Avances</h2>
-          <table className="advance-table">
-            <thead>
-              <tr>
-                <th>Personas</th>
-                <th>Mes</th>
-                <th>Costo</th>
-              </tr>
-            </thead>
-            <tbody>
-              {datos.map((item) => (
-                <tr key={item.id}>
-                  <td>{item.personas}</td>
-                  <td>{item.mes}</td>
-                  <td>${item.costo}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
+    <div className="chart-container">
+      <h2>Gráfica de Consumo</h2>
+      <Bar data={data} options={options} />
     </div>
   );
 };
 
-export default Advance;
+export default ChartPage;
