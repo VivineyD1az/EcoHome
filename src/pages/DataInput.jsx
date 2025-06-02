@@ -40,21 +40,40 @@ const DataInput = () => {
           type="number"
           placeholder="Número de Personas"
           value={personas}
-          onChange={(e) => setPersonas(e.target.value)}
+          onChange={(e) => {
+            const value = parseInt(e.target.value);
+            if (value >= 1 || e.target.value === '') {
+              setPersonas(e.target.value);
+            }
+          }}
+          min="1"
           required
         />
         <input
           type="number"
           placeholder="N° de mes"
           value={mes}
-          onChange={(e) => setMes(e.target.value)}
+          onChange={(e) => {
+            const value = parseInt(e.target.value);
+            if (value >= 1 || e.target.value === '') {
+              setMes(e.target.value);
+            }
+          }}
+          min="1"
+          max="12"
           required
         />
         <input
           type="number"
           placeholder="Costo total"
           value={costo}
-          onChange={(e) => setCosto(e.target.value)}
+          onChange={(e) =>{
+            const value = parseInt(e.target.value);
+            if (value >= 1 || e.target.value === '') {
+              setCosto(e.target.value);
+            }
+          }}
+          min="1"
           required
         />
         <button type="submit" className='button_dataInput'>Generar recomendación</button>
