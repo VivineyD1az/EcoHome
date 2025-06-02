@@ -21,26 +21,30 @@ const Advance = () => {
   }, []);
 
   return (
-    <div className="advance-container">
-      <h2>Tabla de Avances</h2>
-      <table className="advance-table">
-        <thead>
-          <tr>
-            <th>Personas</th>
-            <th>Mes</th>
-            <th>Costo</th>
-          </tr>
-        </thead>
-        <tbody>
-          {datos.map((item) => (
-            <tr key={item.id}>
-              <td>{item.personas}</td>
-              <td>{item.mes}</td>
-              <td>${item.costo}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="parent">
+      <div className="div1">
+        <div className="advance-container">
+          <h2>Tabla de Avances</h2>
+          <table className="advance-table">
+            <thead>
+              <tr>
+                <th>Personas</th>
+                <th>Mes</th>
+                <th>Costo</th>
+              </tr>
+            </thead>
+            <tbody>
+              {datos.map((item) => (
+                <tr key={item.id}>
+                  <td>{item.personas}</td>
+                  <td>{item.mes}</td>
+                  <td>${item.costo}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };
