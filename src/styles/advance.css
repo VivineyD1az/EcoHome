@@ -35,7 +35,6 @@ body {
     font-family: Arial, sans-serif;
     text-align: left; 
     width: 100%;
-
 }
 
 /* Estilo para el título */
@@ -45,35 +44,74 @@ body {
     margin-bottom: 15px;
     color: #86ac41;
 }
+
 .advance-table {
-  width: 100%;
-  border-collapse: collapse;
+    width: 100%;
+    border-collapse: collapse;
 }
 
 .advance-table th,
 .advance-table td {
-  border: 1px solid #f0f0f0;
-  padding: 10px;
-  text-align: center;
+    border: 1px solid #f0f0f0;
+    padding: 10px;
+    text-align: center;
 }
-
 
 .advance-table th:nth-child(1),
 .advance-table td:nth-child(1) {
-  background-color: #acac41; 
+    background-color: #acac41; 
 }   
 
 .advance-table th:nth-child(2),
 .advance-table td:nth-child(2) {
-  background-color: #86ac41; 
+    background-color: #86ac41; 
 }
 
 .advance-table th:nth-child(3),
 .advance-table td:nth-child(3) {
-  background-color: #4fac41; 
+    background-color: #4fac41; 
 }
 
-
 .advance-table tr:hover td {
-  opacity: 0.85;
+    opacity: 0.85;
+}
+
+/* ESTILOS PARA LA GRÁFICA */
+
+/* Contenedor principal de la página de gráfica */
+.chart-page-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: #bcd4a2;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Tarjeta que contiene la gráfica */
+.chart-card {
+    width: 70vw;
+    height: 480px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+}
+
+/* Título de la gráfica */
+.chart-title {
+    text-align: center;
+    color: #6b8b6d;
+    font-size: 1.8rem;
+    margin-bottom: 16px;
+}
+
+/* Contenedor de la gráfica */
+.chart-wrapper {
+    height: calc(100% - 60px);
+    width: 100%;
 }

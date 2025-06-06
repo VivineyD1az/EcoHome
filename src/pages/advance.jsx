@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale } from 'chart.js';
+import '../styles/advance.css';
 
 ChartJS.register(BarElement, CategoryScale, LinearScale);
 
@@ -14,14 +15,29 @@ const ChartPage = () => {
       const db = getFirestore();
       const querySnapshot = await getDocs(collection(db, 'datosFormulario'));
 
-      const mesesTemp = [];
-      const costosTemp = [];
+      const datosPorMes = {};
 
       querySnapshot.forEach((doc) => {
         const data = doc.data();
-        mesesTemp.push("Mes " + data.mes);
-        costosTemp.push(data.costo);
+        const mes = data.mes;
+        const costo = parseFloat(data.costo) || 0;
+
+        if (datosPorMes[mes]) {
+          datosPorMes[mes] += costo;
+        } else {
+          datosPorMes[mes] = costo;
+        }
       });
+
+      const datosTemp = Object.keys(datosPorMes)
+        .map(mes => ({
+          mes: parseInt(mes),
+          costo: datosPorMes[mes]
+        }))
+        .sort((a, b) => a.mes - b.mes);
+
+      const mesesTemp = datosTemp.map(item => "Mes " + item.mes);
+      const costosTemp = datosTemp.map(item => item.costo);
 
       setMeses(mesesTemp);
       setCostos(costosTemp);
@@ -46,60 +62,15 @@ const ChartPage = () => {
   const options = {
     responsive: true,
     maintainAspectRatio: false,
-    layout: {
-      padding: 10,
-    },
-    scales: {
-      y: {
-        beginAtZero: true,
-        ticks: {
-          color: '#4e4e4e',
-        },
-      },
-      x: {
-        ticks: {
-          color: '#4e4e4e',
-        },
-      },
-    },
-    plugins: {
-      legend: {
-        labels: {
-          color: '#4e4e4e',
-        },
-      },
-    },
   };
 
   return (
-    <div
-      style={{
-        width: '100vw',
-        height: '100vh',
-        backgroundColor: '#bcd4a2',
-        padding: '0',
-        margin: '0',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        overflow: 'hidden',
-      }}
-    >
-      <div
-        style={{
-          width: '70vw',
-          height: '480px', 
-          backgroundColor: '#ffffff',
-          borderRadius: '20px',
-          padding: '20px',
-          boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
-          boxSizing: 'border-box',
-        }}
-      >
-        <h2 style={{ textAlign: 'center', color: '#6b8b6d', fontSize: '1.8rem', marginBottom: '16px' }}>
+    <div className="chart-page-container">
+      <div className="chart-card">
+        <h2 className="chart-title">
           Gráfica de Consumo
         </h2>
-        <div style={{ height: '100%', width: '100%' }}>
+        <div className="chart-wrapper">
           <Bar data={data} options={options} />
         </div>
       </div>
