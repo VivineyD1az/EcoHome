@@ -16,7 +16,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "mocha --require jsdom-global/register",
     "eject": "react-scripts eject",
     "dev": "react-scripts start"
   },
@@ -37,5 +37,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.3.0",
+    "chai": "^4.5.0",
+    "chai-string": "^1.6.0",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^11.6.0",
+    "nyc": "^17.1.0",
+    "sinon": "^20.0.0",
+    "supertest": "^7.1.1"
   }
 }
