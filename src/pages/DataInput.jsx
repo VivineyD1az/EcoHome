@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/dataInput.css';
 import { db } from '../firebase/firebaseConfig';
-import { collection, addDoc } from 'firebase/firestore'; // funciones para guardar datos
+import { collection, addDoc } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth'; // 🔹 Importa la autenticación
 
 const DataInput = () => {
   const [personas, setPersonas] = useState('');
@@ -12,8 +13,17 @@ const DataInput = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const auth = getAuth(); // 🔹 Obtener usuario autenticado
+    const user = auth.currentUser;
+
+    if (!user) {
+      alert('Debes iniciar sesión antes de guardar los datos');
+      navigate('/login');
+      return;
+    }
 
     const data = {
+      uid: user.uid, // 🔹 Guardamos el ID del usuario
       personas: parseInt(personas),
       mes: parseInt(mes),
       costo: parseFloat(costo),
@@ -21,11 +31,8 @@ const DataInput = () => {
     };
 
     try {
-      // Guardar en Firebase
       await addDoc(collection(db, 'datosFormulario'), data);
       console.log('Datos guardados en Firestore');
-
-      // Redirigir a la página de recomendaciones
       navigate('/recommendations', { state: data });
     } catch (error) {
       console.error('Error al guardar datos:', error);
@@ -40,12 +47,7 @@ const DataInput = () => {
           type="number"
           placeholder="Número de Personas"
           value={personas}
-          onChange={(e) => {
-            const value = parseInt(e.target.value);
-            if (value >= 1 || e.target.value === '') {
-              setPersonas(e.target.value);
-            }
-          }}
+          onChange={(e) => setPersonas(e.target.value)}
           min="1"
           required
         />
@@ -53,12 +55,7 @@ const DataInput = () => {
           type="number"
           placeholder="N° de mes"
           value={mes}
-          onChange={(e) => {
-            const value = parseInt(e.target.value);
-            if (value >= 1 || e.target.value === '') {
-              setMes(e.target.value);
-            }
-          }}
+          onChange={(e) => setMes(e.target.value)}
           min="1"
           max="12"
           required
@@ -67,16 +64,13 @@ const DataInput = () => {
           type="number"
           placeholder="Costo total"
           value={costo}
-          onChange={(e) =>{
-            const value = parseInt(e.target.value);
-            if (value >= 1 || e.target.value === '') {
-              setCosto(e.target.value);
-            }
-          }}
+          onChange={(e) => setCosto(e.target.value)}
           min="1"
           required
         />
-        <button type="submit" className='button_dataInput'>Generar recomendación</button>
+        <button type="submit" className='button_dataInput'>
+          Generar recomendación
+        </button>
       </form>
     </div>
   );

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { getFirestore, collection, getDocs } from 'firebase/firestore';
+import { getFirestore, collection, getDocs, query, where } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale } from 'chart.js';
 import '../styles/advance.css';
@@ -13,8 +14,17 @@ const ChartPage = () => {
   useEffect(() => {
     const cargarDatos = async () => {
       const db = getFirestore();
-      const querySnapshot = await getDocs(collection(db, 'datosFormulario'));
+      const auth = getAuth();
+      const user = auth.currentUser;
 
+      if (!user) return; // 🔹 Aseguramos que haya usuario autenticado
+
+      const q = query(
+        collection(db, 'datosFormulario'),
+        where('uid', '==', user.uid) // 🔹 Filtrar solo los datos del usuario
+      );
+
+      const querySnapshot = await getDocs(q);
       const datosPorMes = {};
 
       querySnapshot.forEach((doc) => {
@@ -30,17 +40,11 @@ const ChartPage = () => {
       });
 
       const datosTemp = Object.keys(datosPorMes)
-        .map(mes => ({
-          mes: parseInt(mes),
-          costo: datosPorMes[mes]
-        }))
+        .map(mes => ({ mes: parseInt(mes), costo: datosPorMes[mes] }))
         .sort((a, b) => a.mes - b.mes);
 
-      const mesesTemp = datosTemp.map(item => "Mes " + item.mes);
-      const costosTemp = datosTemp.map(item => item.costo);
-
-      setMeses(mesesTemp);
-      setCostos(costosTemp);
+      setMeses(datosTemp.map(item => "Mes " + item.mes));
+      setCostos(datosTemp.map(item => item.costo));
     };
 
     cargarDatos();
@@ -59,17 +63,12 @@ const ChartPage = () => {
     ],
   };
 
-  const options = {
-    responsive: true,
-    maintainAspectRatio: false,
-  };
+  const options = { responsive: true, maintainAspectRatio: false };
 
   return (
     <div className="chart-page-container">
       <div className="chart-card">
-        <h2 className="chart-title">
-          Gráfica de Consumo
-        </h2>
+        <h2 className="chart-title">Gráfica de Consumo</h2>
         <div className="chart-wrapper">
           <Bar data={data} options={options} />
         </div>
