@@ -12,11 +12,11 @@ const Enter = () => {
     setShowDataInput(false);
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("user");
-    sessionStorage.clear();
-    navigate("/"); // o "/" si tu inicio está ahí
-  };
+const handleLogout = () => {
+  localStorage.removeItem("user");
+  sessionStorage.clear();
+  navigate("/", { replace: true }); // 🔁 evita volver con "atrás"
+};
 
   return (
     <div className="container_enter">

@@ -14,7 +14,12 @@ const Login = ({ onSwitchToRegister }) => {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       console.log(userCredential.user);
-      navigate("/enter"); // Redirigir a la página de entrada después de iniciar sesión
+
+      // ✅ Guardar el usuario autenticado en localStorage
+      localStorage.setItem("user", JSON.stringify(userCredential.user));
+
+      // Redirigir a la página de entrada después de iniciar sesión
+      navigate("/enter");
     } catch (error) {
       alert("Error al iniciar sesión: " + error.message);
     }
@@ -30,15 +35,32 @@ const Login = ({ onSwitchToRegister }) => {
             Crear cuenta
           </span>
         </p>
+
         <form className={styles.form} onSubmit={handleSubmit}>
-          <input className={styles.input} type="email" placeholder="Correo electrónico" value={email} onChange={(e) => setEmail(e.target.value)} required />
-          <input className={styles.input} type="password" placeholder="Contraseña" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          <input
+            className={styles.input}
+            type="email"
+            placeholder="Correo electrónico"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            className={styles.input}
+            type="password"
+            placeholder="Contraseña"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+
           <div className={styles.extraOptions}>
             <label>
               <input type="checkbox" style={{ marginRight: "5px" }} /> Recuérdame
             </label>
             <a href="#">¿Olvidaste tu contraseña?</a>
           </div>
+
           <button className={styles.buttonlogin} type="submit">
             Iniciar sesión
           </button>

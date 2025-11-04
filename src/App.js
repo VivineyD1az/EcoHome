@@ -2,11 +2,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Recommendations from "./pages/recommendations";
-import DataInput from "./pages/DataInput";
 import Enter from "./pages/Enter";
 import Advance from "./pages/advance";
-
+import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
   return (
@@ -15,10 +13,24 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/datainput" element={<DataInput/>}/>
-        <Route path="/recommendations" element={<Recommendations />} /> 
-        <Route path="/enter" element={<Enter />} />
-        <Route path="/advance" element={<Advance />} />
+
+        {/* 🔐 Estas rutas requieren sesión */}
+        <Route
+          path="/enter"
+          element={
+            <ProtectedRoute>
+              <Enter />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/advance"
+          element={
+            <ProtectedRoute>
+              <Advance />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </Router>
   );
