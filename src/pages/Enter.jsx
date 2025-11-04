@@ -12,17 +12,22 @@ const Enter = () => {
     setShowDataInput(false);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    sessionStorage.clear();
+    navigate("/"); // o "/" si tu inicio está ahí
+  };
+
   return (
     <div className="container_enter">
       <h1>EcoHome</h1>
       <div className="container_white"></div>
 
-      <div className="input-button">
+      {/* Contenedor con todos los botones superiores */}
+      <div className="top-buttons">
         <button onClick={() => setShowDataInput(true)}>INGRESO DE DATOS</button>
-      </div>
-
-      <div className="recommendation-button">
-        <button onClick={() => navigate("/advance")}>CONSULTAR AVANCE</button> 
+        <button onClick={() => navigate("/advance")}>CONSULTAR AVANCE</button>
+        <button className="logout" onClick={handleLogout}>CERRAR SESIÓN</button>
       </div>
 
       <div className="container_textButton">

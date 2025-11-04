@@ -10,7 +10,6 @@ body {
   width: 100vw;
   position: relative; 
   overflow-x: hidden;
-  
 }
 
 .container_home {
@@ -28,8 +27,46 @@ body {
   left: 0;
   z-index: 0;
 }
-.container_enter{
+
+.container_enter {
   z-index: 0;
+}
+
+/* 🔹 Contenedor superior con los tres botones */
+.top-buttons {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  z-index: 10;
+}
+
+/* Estilo general de los botones superiores */
+.top-buttons button {
+  color: #000000;
+  background-color: transparent;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  width: 150px;
+  font-size: 12px;
+  letter-spacing: 0px;
+  transition: 0.3s;
+}
+
+/* Botón especial para CERRAR SESIÓN */
+.top-buttons .logout {
+  background-color: #86ac41;
+  color: white;
+  border-radius: 8px;
+  padding: 8px 14px;
+  border: none;
+}
+
+.top-buttons .logout:hover {
+  background-color: #648030;
 }
 
 .container_enter h1 {
@@ -39,51 +76,6 @@ body {
   position: absolute;
   top: 20px;
   left: 50px;
-}
-
-.input-button {
-   position: absolute;
-  top: 20px;
-  right: 200px;
-  display: flex;
-  gap: 15px;
-}
-
-.input-button button {
-    color: #000000;
-    background-color: transparent;
-    font-weight: 500;
-    border: none;
-    cursor: pointer;
-    width: 150px;
-    font-size: 12px;
-    letter-spacing: 0px;
-
-    position: absolute;
-    top: 10px;
-    right: 35px;
-}
-.recommendation-button {
-  position: absolute;
-  top: 20px;
-  right: 50px;
-  display: flex;
-  gap: 15px;
-}
-
-.recommendation-button button {
-    color: #000000;
-    background-color: transparent;
-    font-weight: 500;
-    border: none;
-    cursor: pointer;
-    width: 150px;
-    font-size: 12px;
-    letter-spacing: 0px;
-
-    position: absolute;
-    top: 10px;
-    right: 0px;
 }
 
 .close-button {
@@ -112,7 +104,6 @@ body {
   z-index: 0;
 }
 
-/* Estilo personalizado para el primer texto */
 .container_textButton .titulo_ahorro {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
@@ -124,7 +115,6 @@ body {
   letter-spacing: 1px;
 }
 
-/* Estilo personalizado para el segundo texto */
 .container_textButton .descripcion_ahorro {
   font-family: 'Montserrat', sans-serif;
   font-size: 35px;
