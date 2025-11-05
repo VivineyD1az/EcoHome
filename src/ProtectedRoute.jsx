@@ -1,7 +1,8 @@
 import { Navigate } from "react-router-dom";
+import { auth } from "./firebase/firebaseConfig";
 
 const ProtectedRoute = ({ children }) => {
-  const user = localStorage.getItem("user");
+  const user = auth.currentUser;
 
   if (!user) {
     return <Navigate to="/" replace />;
