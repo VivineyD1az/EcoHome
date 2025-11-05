@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "../styles/register.module.css";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
+import Swal from "sweetalert2";
 
 const Register = ({ onSwitchToLogin }) => {
   const [formData, setFormData] = useState({
@@ -18,7 +19,12 @@ const Register = ({ onSwitchToLogin }) => {
     e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
-      alert("Las contraseñas no coinciden.");
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Las contraseñas no coinciden.',
+        confirmButtonColor: '#03920fff'
+      });
       return;
     }
 
@@ -30,13 +36,39 @@ const Register = ({ onSwitchToLogin }) => {
       );
       
       console.log(userCredential.user);
+
+      Swal.fire({
+        icon: 'success',
+        title: '¡Registro exitoso!',
+        showConfirmButton: false,
+        timer: 2000
+      });
       
-      if (onSwitchToLogin) {
-        onSwitchToLogin();   // Llama a la función para cambiar a la página de inicio de sesión
-      }
+      setTimeout(()=>onSwitchToLogin(),2000);   // Llama a la función para cambiar a la página de inicio de sesión
+      
     
     } catch (error) {
-      alert("Error al registrar: " + error.message);
+      let message = "";
+      switch (error.code) {
+        case "auth/email-already-in-use":
+          message = "El correo electrónico ya está en uso.";
+          break;
+        case "auth/invalid-email":
+          message = "Correo electrónico inválido.";
+          break;
+        case "auth/weak-password":
+          message = "La contraseña es demasiado débil (Debe tener al menos 6 caracteres)";
+          break;
+        default:
+          message = "Error al registrar: " + error.message + "Intenta de nuevo.";
+      }
+
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: message,
+        confirmButtonColor: '#03920fff'
+      });
     }
   };
 

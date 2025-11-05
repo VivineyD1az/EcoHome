@@ -3,6 +3,7 @@ import styles from "../styles/login.module.css";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
 import { useNavigate } from "react-router-dom"; 
+import Swal from "sweetalert2";
 
 const Login = ({ onSwitchToRegister }) => {
   const [email, setEmail] = useState("");
@@ -18,10 +19,32 @@ const Login = ({ onSwitchToRegister }) => {
       // ✅ Guardar el usuario autenticado en localStorage
       localStorage.setItem("user", JSON.stringify(userCredential.user));
 
+      Swal.fire({
+        icon: 'success',
+        title: '¡Inicio de sesión exitoso!',
+        showConfirmButton: false,
+        timer: 1500
+      });
+
       // Redirigir a la página de entrada después de iniciar sesión
-      navigate("/enter");
+      setTimeout(()=>navigate("/enter"), 1600);
     } catch (error) {
-      alert("Error al iniciar sesión: " + error.message);
+      let message = "";
+
+      switch (error.code) {
+        case "auth/invalid-credential":
+          message = "Usuario o Contraseña incorrecta.";
+          break;
+        default:
+          message = "Error al iniciar sesión: " + error.message;
+      }
+
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: message,
+        confirmButtonColor: '#03920fff'
+      });
     }
   };
 
