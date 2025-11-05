@@ -19,12 +19,12 @@ const Login = ({ onSwitchToRegister }) => {
       // ✅ Guardar el usuario autenticado en localStorage
       localStorage.setItem("user", JSON.stringify(userCredential.user));
 
-      Swal.fire({
+     /* Swal.fire({
         icon: 'success',
         title: '¡Inicio de sesión exitoso!',
         showConfirmButton: false,
         timer: 1500
-      });
+      });*/
 
       // Redirigir a la página de entrada después de iniciar sesión
       setTimeout(()=>navigate("/enter"), 1600);

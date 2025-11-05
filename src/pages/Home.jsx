@@ -1,12 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../styles/home.css";
 import imageHome from "../assets/imageHome.svg";
 import Login from "./Login";
 import Register from "./Register";
+import { auth } from "../firebase/firebaseConfig";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => { setUser(currentUser); 
+      if (currentUser) {
+        navigate("/enter", { replace: true }); // 🔁 evita volver con "atrás"
+      }
+    });
+    return () => unsubscribe();
+  }, [navigate]);
+
 
   const closeModals = () => {
     setShowLogin(false);
@@ -23,14 +38,27 @@ const Home = () => {
     setShowLogin(true);
   };
 
+  const handleLogout = async () => {
+    await signOut(auth);
+    setUser(null);
+  };
+
   return (
     <div className="container_home">
       <h1>EcoHome</h1>
       <div className="container_white"></div>
+
+      {!user ? (
       <div className="enter-page">
         <button onClick={() => setShowLogin(true)}>INICIAR SESION</button>
         <button onClick={() => setShowRegister(true)}>CREAR CUENTA</button>
       </div>
+      ) : (
+        <div className="enter-page">
+          <button onClick={() => navigate("/enter")}>VOLVER AL PANEL</button>
+          <button className="logout" onClick={handleLogout}>CERRAR SESIÓN</button>
+        </div>
+      )}
 
       <div className="container_textButton">
         <p>¡Mejora tu consumo de energía ahora!</p>

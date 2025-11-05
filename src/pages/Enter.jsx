@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import "../styles/enter.css";
 import enterImage from "../assets/enter.png";
 import DataInput from "./DataInput";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase/firebaseConfig";
 
 const Enter = () => {
   const [showDataInput, setShowDataInput] = useState(false);
@@ -12,10 +14,13 @@ const Enter = () => {
     setShowDataInput(false);
   };
 
-const handleLogout = () => {
-  localStorage.removeItem("user");
-  sessionStorage.clear();
-  navigate("/", { replace: true }); // 🔁 evita volver con "atrás"
+const handleLogout = async () => {
+  try {
+    await signOut(auth);
+    navigate("/", { replace: true });
+  }catch (error) {
+    console.error("Error al cerrar sesión:", error);
+  }
 };
 
   return (
